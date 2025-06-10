@@ -71,8 +71,8 @@ $db_name = 'racktables_db';
 1. **Tambah Lokasi**:  
    - `Menu: Locations → Add Location`  
    - Contoh:  
-     - Name: `DC-Jakarta`  
-     - Type: `Data Center`  
+     - Name: `Dinas Komunikasi, Informatika dan Statistik Kota Kediri`  
+     - Type: `Jaringan Intra Pemerintah Kota Kediri`  
      - Parent: `None`  
 
 2. **Tambah Rak**:  
@@ -87,7 +87,7 @@ $db_name = 'racktables_db';
 
 ```mermaid
 graph BT
-    DC[DC-Jakarta] --> Ruang1[Ruang Server 1]
+    JIP[JIP-Kota-Kediri-A] --> Ruang1[Ruang NOC 1]
     Ruang1 --> RACK-A01
     Ruang1 --> RACK-A02
 ```
@@ -244,7 +244,4 @@ tar -czvf racktables_config_$(date +%F).tar.gz /var/www/html/racktables/inc/
 - [Template RackCode](https://github.com/RackTables/racktables-contribs)  
 - [Komunitas Forum](https://groups.google.com/g/racktables-users)  
 
-> **Catatan Profesional**: Untuk lingkungan produksi besar, implementasi **replikasi database MySQL** dan **load balancing PHP-FPM** untuk high availability.
-
-**[⬇ Download PDF Version](https://example.com/racktables-manual-pdf)** | **[✎ Edit Template](https://github.com/your-repo)**  
-© 2024 Data Center Professionals Guide - RackTables v0.22+
+© 2024 Cyber Security Research Group  Politeknik Elektronika Negeri Surabaya - RackTables v0.22+
