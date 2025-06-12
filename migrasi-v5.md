@@ -1,4 +1,45 @@
 ### **Rencana Migrasi Pusat Data: 14 Hari (20 September - 3 Oktober 2025)**  
+### **Rencana Migrasi Pusat Data (Detil Lengkap)**  
+**Latar Belakang:**  
+Migrasi pusat data melibatkan pemindahan **2 rack server** ke lokasi baru dengan **8 rack**, termasuk migrasi jaringan, perangkat, dan kabel. Proses ini melibatkan **5 pihak utama**:  
+1. **Administrator Jaringan** (konfigurasi, pengujian).  
+2. **Kepala IT** (pengesahan, pengawasan).  
+3. **Teknisi Jaringan/Telekomunikasi** (pemindahan fisik, kabel).  
+4. **ISP** (pemindahan koneksi internet).  
+5. **Project Manager** (koordinasi, timeline).  
+
+**Target:**  
+- **Minim downtime** (maksimal 48 jam).  
+- **Zero data loss**.  
+- **Jaringan berfungsi penuh** di lokasi baru dengan konfigurasi identik.  
+
+
+```mermaid
+flowchart TD
+    A[Fase 1: Perencanaan] --> B[Fase 2: Pemindahan]
+    B --> C[Fase 3: Pengujian]
+    
+    subgraph Fase 1
+        A1(Kick-off Meeting) --> A2(Inventarisasi)
+        A2 --> A3(Persiapan Lokasi Baru)
+        A3 --> A4(Backup Data)
+        A4 --> A5(Koordinasi ISP)
+        A5 --> A6(Finalisasi SOP)
+    end
+
+    subgraph Fase 2
+        B1(Shutdown & Cabut Perangkat) --> B2(Transportasi)
+        B2 --> B3(Pasang di Rack Baru)
+        B3 --> B4(Koneksi ISP)
+    end
+
+    subgraph Fase 3
+        C1(Test Konektivitas) --> C2(Test Server)
+        C2 --> C3(Test Jaringan)
+        C3 --> C4(Test Beban)
+        C4 --> C5(Validasi Dokumen)
+    end
+```
 Berikut adalah alur kerja migrasi terstruktur dalam **3 fase utama**, dilengkapi jadwal harian dan diagram Mermaid.
 
 ---
@@ -83,7 +124,10 @@ gantt
 
 2. **Manajemen Risiko:**  
    - **Rollback Plan:** Jika pengujian gagal, kembali ke lokasi lama menggunakan backup (max 6 jam).  
-   - **Downtime:** Pemadaman hanya terjadi pada 26 Sep (malam) hingga 29 Sep (pagi).  
+   - **Downtime:** Pemadaman hanya terjadi pada 26 Sep (malam) hingga 29 Sep (pagi) atau diluar jam kerja.
+   - **Rollback plan** harus siap jika pengujian gagal.
+   - **ISP harus standby** selama migrasi routing.  
+
 
 3. **Kriteria Sukses:**  
    - Semua server/aplikasi berjalan normal di lokasi baru.  
