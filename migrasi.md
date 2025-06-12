@@ -46,7 +46,7 @@ graph LR
 | Uji Failover & QoS | 3 hari | 27-29 Sep | Admin Jaringan | [ ] |  
 | Dokumentasi Akhir | 1 hari | 30 Sep | Admin Jaringan | [ ] |  
 
-#### **Konfigurasi Kritis**:  
+#### **Contoh Konfigurasi Kritis**:  
 ```bash
 # Backup OSPF Configuration
 router ospf 100
