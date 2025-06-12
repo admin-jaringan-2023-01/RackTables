@@ -112,10 +112,10 @@ gantt
     axisFormat %H:%M
     
     section Alih Daya
-    Maintenance Mode ON : 2025-10-04 20:00, 15m
-    Update DNS : after, 30m
-    BGP Propagation : after, 1h
-    Validasi Akhir : after, 2h
+    Maintenance Mode ON : maintenance1, 2025-10-04 20:00, 15m
+    Update DNS : maintenance2, after maintenance1 , 30m
+    BGP Propagation : maintenance3, after maintenance2,  1h
+    Validasi Akhir : maintenance4, after maintenance3,  2h
     
     section Kontinjensi
     Rollback Plan : 2025-10-04 23:00, 1h
