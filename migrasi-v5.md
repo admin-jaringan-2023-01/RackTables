@@ -1,7 +1,7 @@
-### **Rencana Migrasi Pusat Data: 14 Hari (20 September - 3 Oktober 2025)**  
-### **Rencana Migrasi Pusat Data (Detil Lengkap)**  
+### **Rencana Migrasi Pusat Jaringan Intra Pemerintah: 14 Hari (20 September - 3 Oktober 2025)**  
+
 **Latar Belakang:**  
-Migrasi pusat data melibatkan pemindahan **2 rack server** ke lokasi baru dengan **8 rack**, termasuk migrasi jaringan, perangkat, dan kabel. Proses ini melibatkan **5 pihak utama**:  
+Migrasi Pusat Jaringan Intra Pemerintah melibatkan pemindahan **2 rack server** ke lokasi baru dengan **8 rack**, termasuk migrasi jaringan, perangkat, dan kabel. Proses ini melibatkan **5 pihak utama**:  
 1. **Administrator Jaringan** (konfigurasi, pengujian).  
 2. **Kepala IT** (pengesahan, pengawasan).  
 3. **Teknisi Jaringan/Telekomunikasi** (pemindahan fisik, kabel).  
@@ -89,7 +89,7 @@ Berikut adalah alur kerja migrasi terstruktur dalam **3 fase utama**, dilengkapi
 ### **Diagram Alur Migrasi (Mermaid)**  
 ```mermaid
 gantt
-    title Jadwal Migrasi Pusat Data (20 Sep - 3 Okt 2025)
+    title Jadwal Migrasi Pusat Jaringan Intra Pemerintah (20 Sep - 3 Okt 2025)
     dateFormat  YYYY-MM-DD
     axisFormat  %d/%m
 

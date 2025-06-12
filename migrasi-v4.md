@@ -1,4 +1,4 @@
-## **Rencana Migrasi Pusat Data: 20 September - 4 Oktober 2025**  
+## **Rencana Migrasi Pusat Jaringan Intra Pemerintah: 20 September - 4 Oktober 2025**  
 
 ```mermaid
 gantt
