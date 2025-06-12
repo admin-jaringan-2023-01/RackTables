@@ -169,30 +169,5 @@ gantt
 
 **Versi Dokumen**: 3.0  
 **Tanggal Publikasi**: 1 September 2025  
-© 2025 Tim Migrasi Data Center  
+© 2025 Tim Migrasi 
 
-[Download Versi PDF](#) | [Template Word](#)  
-*Dokumen berlaku untuk migrasi 8 Sep - 17 Okt 2025*  
-
-<style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 0.9em;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    padding: 12px 15px;
-    text-align: left;
-  }
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  h2 {
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-    margin-top: 30px;
-  }
-</style>
