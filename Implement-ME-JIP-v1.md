@@ -159,19 +159,17 @@ graph TD
     Pusat -->|Kebijakan Nasional| Provinsi
     Pusat -->|Kebijakan Nasional| Instansi
     Provinsi -->|Koordinasi| Kabupaten
-    
-    sublayer Pusat_Layer
+    subgraph Pusat_Layer
         Pusat -->|Supervisi| SOC_Nasional[SOC Nasional]
         SOC_Nasional -->|Monitoring| ALL[Semua Sensor]
     end
-    
-    sublayer Provinsi_Layer
+    subgraph Provinsi_Layer
         Provinsi -->|Operasional| SOC_Provinsi[SOC Provinsi]
         SOC_Provinsi -->|Monitoring| PROV_SENSOR[Sensor Provinsi]
         SOC_Provinsi -->|Monitoring| KAB_SENSOR[Sensor Kabupaten]
     end
     
-    sublayer Instansi_Layer
+    subgraph Instansi_Layer
         Instansi -->|Operasional| SOC_Instansi[SOC Instansi]
         SOC_Instansi -->|Monitoring| INST_SENSOR[Sensor Instansi]
     end
