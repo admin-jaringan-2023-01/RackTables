@@ -5,7 +5,7 @@
 graph LR
     
     %% DEFINISI SUBGRAPH KIRI (SPBE)
-    subgraph Indeks SPBE (47 Indikator Lama)
+    subgraph Indeks SPBE
         direction LR
         S1["1. Kebijakan Internal Tata Kelola"]
         S2["2. Kebijakan Internal Peta Rencana"]
@@ -44,7 +44,7 @@ graph LR
     end
 
     %% DEFINISI SUBGRAPH KANAN (PEMDI)
-    subgraph Indeks Pemerintah Digital (35 Indikator Baru)
+    subgraph Indeks Pemerintah Digital 
         direction LR
         P1["1. Strategi Transformasi Digital"]
         P2["2. Inovasi Proses Bisnis Tematik"]
