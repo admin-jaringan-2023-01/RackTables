@@ -1,3 +1,4 @@
+```mermaid
 %% Diagram Korelasi Indeks SPBE ke Indeks Pemerintah Digital (PEMDI)
 %% Versi Perbaikan - Dibuat oleh Gemini
 
