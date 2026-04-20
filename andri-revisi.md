@@ -715,4 +715,75 @@ Future work will address these limitations across four priority directions: (1) 
 | Section 3.10 repeated all methodology — was entirely redundant | Section 3.10 deleted; its content is already in Sections 3.3–3.9   |
 
 ***
+## Response to Reviewer 2's comment:
+This is an excellent critical question — and one that must be answered with precision in the paper. Here is a structured, evidence-based answer you can use **directly in your manuscript, a rebuttal letter, or a presentation**.
 
+***
+
+## What IGL1 Actually Improves Over Prior Hybrids — A Specific Evidence-Based Analysis
+
+The comparison must be split into **three distinct dimensions**: performance outcomes, feature subset size, and methodological properties. All three matter for a credible novelty claim.
+
+***
+
+### Dimension 1 — Numerical Performance Outcomes
+
+The honest picture, based on published results, is as follows:
+
+| Method | Classifier | Features Used | Accuracy | Macro F1 | Leakage-Aware | Label Space |
+|---|---|---|---|---|---|---|
+| **IGRF-RFE** [Yin et al.] [arxiv](https://arxiv.org/ftp/arxiv/papers/2203/2203.16365.pdf) | MLP | 23 of 42 | 84.24% | 82.85% | Not stated | ~10-class |
+| **DT-RFECV** [Awad & Fraihat] [nchr.elsevierpure](https://nchr.elsevierpure.com/en/publications/recursive-feature-elimination-with-cross-validation-with-decision) | RF, DT, SVM | 15 of 42 | ~93% (binary) | — | Not stated | Binary |
+| **MI + Extra Trees + Stacking** [More et al.] [open-access.bcu.ac](https://www.open-access.bcu.ac.uk/15332/1/algorithms-17-00064.pdf) | Stacking ensemble | — | 96.24% | — | Not stated | Not stated |
+| **MLP + IGL1 (this study)** [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_6fec7979-e7a7-4bdc-aa8c-831a85bd5180/68c13b89-4200-4311-862e-f6904a80adb6/A-Novel-Hybrid-IGL1-Feature-Selection-Method-for-High-Performance-Intrusion-Detection-on-the-UNSW-NB15-Dataset-Using-Multiple-Machine-Learning-Models-1.docx) | MLP | 21 of 42 | 83.22% | 82.59% | ✓ Yes | 6-class |
+| **RF + IGL1 (this study)** [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_6fec7979-e7a7-4bdc-aa8c-831a85bd5180/68c13b89-4200-4311-862e-f6904a80adb6/A-Novel-Hybrid-IGL1-Feature-Selection-Method-for-High-Performance-Intrusion-Detection-on-the-UNSW-NB15-Dataset-Using-Multiple-Machine-Learning-Models-1.docx) | Random Forest | 21 of 42 | **84.32%** | **83.76%** | ✓ Yes | 6-class |
+
+**Critical framing note:** The numbers cannot be compared at face value because the studies use different label spaces, preprocessing strategies, and evaluation protocols. Studies reporting 93–96% accuracy on UNSW-NB15 typically use either binary classification or apply oversampling before partitioning — both of which substantially inflate apparent accuracy. IGL1's 84.32% accuracy is achieved under a **stricter six-class setting, without oversampling, and with a confirmed leakage-aware protocol** — conditions that are more conservative and therefore more credible. [academia](https://www.academia.edu/66857863/Improving_the_Performance_of_Machine_Learning_Based_Network_Intrusion_Detection_Systems_on_the_UNSW_NB15_Dataset)
+
+This is the correct framing for reviewers: **IGL1 does not claim raw numerical superiority. It claims competitive performance under the most methodologically rigorous conditions among compared approaches.** [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_6fec7979-e7a7-4bdc-aa8c-831a85bd5180/68c13b89-4200-4311-862e-f6904a80adb6/A-Novel-Hybrid-IGL1-Feature-Selection-Method-for-High-Performance-Intrusion-Detection-on-the-UNSW-NB15-Dataset-Using-Multiple-Machine-Learning-Models-1.docx)
+
+***
+
+### Dimension 2 — Feature Subset Quality
+
+| Property | IGRF-RFE  [arxiv](https://arxiv.org/ftp/arxiv/papers/2203/2203.16365.pdf) | DT-RFECV  [nchr.elsevierpure](https://nchr.elsevierpure.com/en/publications/recursive-feature-elimination-with-cross-validation-with-decision) | IGL1 (This Study) [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_6fec7979-e7a7-4bdc-aa8c-831a85bd5180/68c13b89-4200-4311-862e-f6904a80adb6/A-Novel-Hybrid-IGL1-Feature-Selection-Method-for-High-Performance-Intrusion-Detection-on-the-UNSW-NB15-Dataset-Using-Multiple-Machine-Learning-Models-1.docx) |
+|---|---|---|---|
+| Final features retained | 23 of 42 | 15 of 42 | 21 of 42 |
+| Selection mechanism | IG filter → RF importance → iterative RFE wrapper | RFE with CV (decision tree estimator) | IG filter → L1-LinearSVC sparse ranking (one-pass) |
+| Subset determinism | Varies with RF sampling variability | Varies with CV fold randomness | Deterministic given fixed training data and C |
+| Classifier-agnostic subset | No — RF-importance-driven | No — DT-driven | Yes — L1-LinearSVC used as ranker, not final model |
+| Iterative retraining required | Yes (RFE) | Yes (RFECV) | No |
+
+IGL1 retains 21 features, which is between IGRF-RFE (23) and DT-RFECV (15). The key advantage over both is that the IGL1 subset is obtained without iterative retraining and without being tied to a single estimator's importance scores. This makes the subset more reproducible and more generalisable across classifier families. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_6fec7979-e7a7-4bdc-aa8c-831a85bd5180/68c13b89-4200-4311-862e-f6904a80adb6/A-Novel-Hybrid-IGL1-Feature-Selection-Method-for-High-Performance-Intrusion-Detection-on-the-UNSW-NB15-Dataset-Using-Multiple-Machine-Learning-Models-1.docx)
+
+***
+
+### Dimension 3 — Methodological Properties (The Strongest Advantage)
+
+This is where IGL1's **clearest and least contestable advantage** lies. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_6fec7979-e7a7-4bdc-aa8c-831a85bd5180/68c13b89-4200-4311-862e-f6904a80adb6/A-Novel-Hybrid-IGL1-Feature-Selection-Method-for-High-Performance-Intrusion-Detection-on-the-UNSW-NB15-Dataset-Using-Multiple-Machine-Learning-Models-1.docx)
+
+**Advantage 1 — Non-iterative pipeline.**
+IGRF-RFE requires at minimum O(d) model refittings (where d is the number of features eliminated), plus cross-validation in DT-RFECV. IGL1 fits LinearSVC exactly once on the IG-retained set. Under procedural efficiency criteria — which matter for production IDS pipelines — this is a meaningful property. [arxiv](https://arxiv.org/ftp/arxiv/papers/2203/2203.16365.pdf)
+
+**Advantage 2 — Leakage-aware enforcement.**
+Neither IGRF-RFE nor DT-RFECV explicitly reports that IG scoring, RF importance, or RFE elimination were performed using training data only. Rosenblatt et al. demonstrated that leakage during feature selection can inflate IDS accuracy by several percentage points. Under this understanding, IGL1's 84.32% under a confirmed leakage-aware protocol is not directly comparable with — and is arguably more trustworthy than — results from pipelines that do not document this step. [nchr.elsevierpure](https://nchr.elsevierpure.com/en/publications/recursive-feature-elimination-with-cross-validation-with-decision)
+
+**Advantage 3 — Multi-classifier generalisability.**
+IGRF-RFE evaluates its subset primarily on MLP. DT-RFECV tests on several classifiers but in a binary classification setting. IGL1 systematically tests the same 21-feature subset across five classifiers (MLP, RF, GB, SVM, KNN) under a six-class multi-attack setting and shows consistent above-80% performance across all five. This is direct empirical evidence that the subset is classifier-agnostic — a property the other hybrids do not demonstrate under comparable conditions. [arxiv](https://arxiv.org/ftp/arxiv/papers/2203/2203.16365.pdf)
+
+**Advantage 4 — Stability of selection under correlation.**
+L1 regularization inherently handles multicollinearity by driving correlated predictors toward zero, selecting one representative from a correlated group. RF importance, by contrast, tends to spread importance across correlated features, potentially inflating the apparent relevance of redundant predictors. The IG-then-L1 sequence therefore produces a sparser and more stable subset when UNSW-NB15 features are correlated — a known characteristic of this dataset's flow and timing variables. [ijltes](http://www.ijltes.com/wp-content/uploads/2020/08/3.pdf)
+
+***
+
+### How to Write This in the Manuscript
+
+**Replace the current novelty paragraph with this:**
+
+> The specific advantages of IGL1 over existing hybrid feature selection approaches on UNSW-NB15 can be articulated across three dimensions. First, in terms of procedural design, IGL1 is the only hybrid approach among the compared methods that eliminates iterative model retraining entirely: IGRF-RFE  relies on iterative RFE across the RF-importance-ranked feature set, and DT-RFECV  applies cross-validated RFE with a decision tree estimator, both of which require repeated model fittings per elimination step. IGL1 fits L1-regularized LinearSVC once on the IG-retained set and applies a deterministic top-k rule, making the pipeline both reproducible and procedurally simpler. Second, in terms of subset generalisability, IGL1 is evaluated across five classifier families under a consistent six-class protocol, demonstrating that the 21-feature subset maintains above-80% macro F1-score across all five classifiers. IGRF-RFE evaluates primarily on MLP, and DT-RFECV operates in a binary classification setting, limiting insight into cross-model generalisability. Third, in terms of evaluation rigour, IGL1 explicitly enforces a leakage-aware experimental protocol in which all preprocessing steps are derived from training data only. Prior hybrid studies on UNSW-NB15 do not document this ordering, which leaves their reported accuracy levels open to the inflation effects of feature-selection leakage. On this basis, IGL1's competitive performance at 84.32% accuracy and 83.76% macro F1-score under these stricter conditions constitutes a meaningful methodological improvement, independent of whether the raw numerical values exceed prior benchmarks. [cite 17][cite 25][cite 29][cite 43] [arxiv](https://arxiv.org/abs/2203.16365)
+
+***
+
+### One-Paragraph Summary for the Rebuttal Letter
+
+> We agree with the reviewer that Information Gain and L1-regularization are individually established. The specific improvements IGL1 offers over existing UNSW-NB15 hybrids are: (1) it is non-iterative — unlike IGRF-RFE [Yin et al., 2022] and DT-RFECV [Awad & Fraihat, 2023], which both require repeated model retraining; (2) the resulting 21-feature subset is evaluated across five classifier families, unlike IGRF-RFE (MLP-centred) and DT-RFECV (binary setting); and (3) it is the only hybrid approach among the compared methods with an explicitly documented leakage-aware protocol. At 84.32% accuracy under a confirmed six-class, no-oversampling, leakage-aware experimental design, IGL1 is directly competitive with IGRF-RFE's 84.24% — obtained under less strict reporting conditions — while offering a simpler, more reproducible, and classifier-agnostic pipeline. We have revised the Introduction, Related Work, and Section 3.2 to make these specific advantages explicit. [open-access.bcu.ac](https://www.open-access.bcu.ac.uk/15332/1/algorithms-17-00064.pdf)
